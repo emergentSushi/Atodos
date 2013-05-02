@@ -73,9 +73,11 @@ function service() {
 	};
 
 	self.update = function ( todo, callback ) {
+		debugger;
 		$.ajax({
   			url: '/api/todos/' + todo._id,
   			type: 'PUT',
+  			data: todo,
   			success: function( resp ) {
   				callback( resp );
   			}

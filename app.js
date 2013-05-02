@@ -74,18 +74,20 @@ app.get('/api/todos/:id', function (req, res){
 });
 
 app.put('/api/todos/:id', function (req, res){
-  return TodoModel.findById(req.params.id, function (err, todo) {
-    todo.description = req.body.description;
-    todo.type = req.body.type;
-    return todo.save(function (err) {
-      if (!err) {
-        console.log("updated");
-      } else {
-        console.log(err);
-      }
-      return res.send(todo);
-    });
-  });
+	console.log("PUT: ");
+  	console.log(req.body);
+  	return TodoModel.findById(req.params.id, function (err, todo) {
+	    todo.description = req.body.description;
+	    todo.type = req.body.type;
+	    return todo.save(function (err) {
+	      if (!err) {
+	        console.log("updated");
+	      } else {
+	        console.log(err);
+	      }
+	      return res.send(todo);
+	    });
+  	});
 });
 
 app.delete('/api/todos/:id', function (req, res){
