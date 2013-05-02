@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta charset="utf-8">
+    <title>Atodos</title>
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/bootstrap.css">
+</head>
+<body>
+	<table class="table">
+		<thead>
+			<th>Atodos</th>
+		</thead>
+		<tbody id="list" data-bind="template: { name: 'todo-template', foreach: TodoList }">
+
+		</tbody>
+	</table>
+
+
+	<script type="text/html" id="todo-template">
+		<tr>
+			<td>
+				<label>Description</label><input data-bind="value: description" />
+				<select style="width:80px" data-bind="options: [ 'day', 'week', 'month' ], value: type"></select>
+				<button class="btn btn-success" data-bind="click: saveTodo, visible: dirty">Save</button>
+				<button class="btn btn-danger" data-bind="click: $parent.deleteTodo, visible: _id">Delete</button>
+			</td>
+		</tr>
+	</script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+	<script type="text/javascript" src="/script/knockout.min.js"></script>
+	<script type="text/javascript" src="/script/client.js"></script>
+	<script type="text/javascript">
+		var t = new Atodos();
+		$(document).ready( function () {
+			ko.applyBindings( t, document.getElementById('list') );
+		 });
+	</script>
+</body>
+</html>
